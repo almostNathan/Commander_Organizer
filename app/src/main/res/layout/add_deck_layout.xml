@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="#808080">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <AutoCompleteTextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:hint="@string/enter_card_autocomplete"
+            android:id="@+id/add_card_auto_complete"
+            android:completionThreshold="3"
+            android:dropDownHeight="100dp"
+            android:background="@color/white"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:text="@string/submit_card_button"
+            android:textSize="12sp"
+            android:id="@+id/add_card_button"
+            android:onClick="addCardToDeck"/>
+
+    </LinearLayout>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:hint="@string/deck_list_edit_text"
+        android:id="@+id/add_deck_edit_text"
+        android:inputType="textMultiLine"
+        android:autofillHints=""
+        android:gravity="top"
+        android:background="@color/white"/>
+
+    <Button
+        android:id="@+id/submit_deck"
+        android:onClick="submitDeck"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/submit_deck_button" />
+
+
+</LinearLayout>

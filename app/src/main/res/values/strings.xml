@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Commander Organizer</string>
+    <string name="add_deck_menu">Add Deck</string>
+    <string name="deck_list_edit_text">or paste your formatted list here.</string>
+    <string name="submit_deck_button">Submit Deck</string>
+    <string name="enter_card_autocomplete">Enter Card Name</string>
+    <string name="submit_card_button">ADD</string>
+</resources>
