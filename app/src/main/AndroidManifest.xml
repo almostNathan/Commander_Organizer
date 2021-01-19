@@ -30,6 +30,11 @@
             android:label="deck_list_screen"
             android:theme="@style/Theme.CommanderOrganizer">
         </activity>
+
+        <activity android:name=".CardScreen"
+            android:label="card_screen"
+            android:theme="@style/Theme.CommanderOrganizer">
+        </activity>
     </application>
 
 </manifest>

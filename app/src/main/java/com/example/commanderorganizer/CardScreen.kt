@@ -11,34 +11,35 @@ import androidx.recyclerview.widget.RecyclerView
 import java.io.FileInputStream
 import java.io.ObjectInputStream
 
-class DeckListScreen : AppCompatActivity() {
+class CardScreen : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.deck_list_screen)
+        setContentView(R.layout.card_screen_layout)
 
-        val commanderKey = intent.extras?.getInt("Commander Key")
-
+        val passedCard = intent.extras?.get("Card") as Card
         val commanderHashMap = getCmdrHashMap()
-        val commanderNameView = findViewById<TextView>(R.id.commander_name_deck_list_screen)
-        commanderNameView.text = commanderHashMap[commanderKey]
+        val cardCmdrHashMap = HashMap<Int, String>()
 
 
-        val deckListCards = ArrayList<Card>()
-        //get our "DB" of cards
-        val cardList = getCardList()
-
-        //make list of cards in this deck
-        for (item in cardList) {
-            if (item.listOfCommanders.contains(commanderKey)) {
-                deckListCards.add(item)
+        for (item in commanderHashMap){
+            if (item.key in passedCard.listOfCommanders){
+                cardCmdrHashMap.put(item.key, item.value)
             }
         }
 
+        //get views
+        val cardScreenCardName = findViewById<TextView>(R.id.card_screen_card_name)
 
-        val deckListView = findViewById<RecyclerView>(R.id.deck_list_view)
-        deckListView.adapter = DeckListAdapter(deckListCards)
-        deckListView.layoutManager = LinearLayoutManager(this)
+        cardScreenCardName.text = passedCard.cardName
+
+
+        val commanderNameRecyclerView = findViewById<RecyclerView>(R.id.card_screen_commander_list)
+        commanderNameRecyclerView.adapter = CardScreenCommanderAdapter(cardCmdrHashMap)
+        commanderNameRecyclerView.layoutManager = LinearLayoutManager(this)
+
+
+
 
 
     }
@@ -48,14 +49,6 @@ class DeckListScreen : AppCompatActivity() {
         val cmdrHashMap = cmdrInputStream.readObject() as HashMap<Int, String>
         cmdrInputStream.close()
         return cmdrHashMap
-    }
-
-    private fun getCardList(): ArrayList<Card> {
-        val cardsInDecks: ArrayList<Card>
-        val cardInputStream = ObjectInputStream(FileInputStream("${applicationContext.filesDir} cardsInDecks"))
-        cardsInDecks = cardInputStream.readObject() as ArrayList<Card>
-        cardInputStream.close()
-        return cardsInDecks
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -73,4 +66,5 @@ class DeckListScreen : AppCompatActivity() {
         }
         return true
     }
+
 }

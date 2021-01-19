@@ -15,15 +15,13 @@ import org.w3c.dom.Text
 
 class CommanderAdapter (private val commanderHashMap : HashMap<Int, String>) : RecyclerView.Adapter<CommanderAdapter.ViewHolder>() {
 
-
-
-
     class ViewHolder(view : View) : RecyclerView.ViewHolder(view){
         val textView :TextView = view.findViewById(R.id.commander_name)
 
         init{
             textView.setOnClickListener {
                 val theIntent = Intent(view.context, DeckListScreen::class.java)
+                //check back when delete is implemented
                 theIntent.putExtra("Commander Key", layoutPosition)
 
                 view.context.startActivity(theIntent)
@@ -31,19 +29,22 @@ class CommanderAdapter (private val commanderHashMap : HashMap<Int, String>) : R
         }
     }
 
-    override fun getItemCount(): Int {
-        return commanderHashMap.size
-    }
-
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.textView.text = commanderHashMap[position]
-        holder.textView.append(position.toString())
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.commander_adapter_layout, parent, false)
 
         return ViewHolder(view)
     }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
+        holder.textView.text = commanderHashMap[position]
+        holder.textView.append(position.toString())
+    }
+
+    override fun getItemCount(): Int {
+        return commanderHashMap.size
+    }
+
+
 
 }
