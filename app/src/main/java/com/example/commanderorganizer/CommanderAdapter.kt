@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.ArrayAdapter
+import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.startActivity
 import androidx.core.content.contentValuesOf
 import androidx.recyclerview.widget.RecyclerView
@@ -36,9 +37,14 @@ class CommanderAdapter (private val commanderHashMap : HashMap<Int, String>) : R
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-
         holder.textView.text = commanderHashMap[position]
         holder.textView.append(position.toString())
+
+        if(position % 2 == 1){
+            holder.textView.setBackgroundColor(ContextCompat.getColor(holder.textView.context, R.color.commander_background_1))
+        }else {
+            holder.textView.setBackgroundColor(ContextCompat.getColor(holder.textView.context, R.color.commander_background_2))
+        }
     }
 
     override fun getItemCount(): Int {

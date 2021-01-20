@@ -6,13 +6,17 @@
     android:orientation="vertical">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/commander_name_deck_list_screen"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/commander_name_deck_list_screen"/>
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:paddingVertical="5dp"
+        android:background="@color/commander_name_background"/>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/deck_list_view"/>
+        android:id="@+id/deck_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </LinearLayout>

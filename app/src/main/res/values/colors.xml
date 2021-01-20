@@ -7,4 +7,10 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="commander_name_background">#63796D</color>
+    <color name="card_background_1">#C0EBD5</color>
+    <color name="card_background_2">#AFD6C2</color>
+    <color name="card_name_background">#63796D</color>
+    <color name="commander_background_1">#C0EBD5</color>
+    <color name="commander_background_2">#AFD6C2</color>
 </resources>

@@ -6,11 +6,13 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import java.io.FileInputStream
 import java.io.ObjectInputStream
 
+@Suppress("UNCHECKED_CAST")
 class DeckListScreen : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,7 +28,7 @@ class DeckListScreen : AppCompatActivity() {
 
         val deckListCards = ArrayList<Card>()
         //get our "DB" of cards
-        val cardList = getCardList()
+        val cardList : ArrayList<Card> = getCardList()
 
         //make list of cards in this deck
         for (item in cardList) {
@@ -36,9 +38,15 @@ class DeckListScreen : AppCompatActivity() {
         }
 
 
-        val deckListView = findViewById<RecyclerView>(R.id.deck_list_view)
-        deckListView.adapter = DeckListAdapter(deckListCards)
-        deckListView.layoutManager = LinearLayoutManager(this)
+        val deckListRecyclerView = findViewById<RecyclerView>(R.id.deck_list_view)
+        deckListRecyclerView.adapter = DeckListAdapter(deckListCards)
+        deckListRecyclerView.layoutManager = LinearLayoutManager(this)
+
+        if (deckListCards.size %2 == 0){
+            deckListRecyclerView.setBackgroundColor(ContextCompat.getColor(deckListRecyclerView.context, R.color.card_background_1))
+        }else{
+            deckListRecyclerView.setBackgroundColor(ContextCompat.getColor(deckListRecyclerView.context, R.color.card_background_2))
+        }
 
 
     }
@@ -51,16 +59,15 @@ class DeckListScreen : AppCompatActivity() {
     }
 
     private fun getCardList(): ArrayList<Card> {
-        val cardsInDecks: ArrayList<Card>
         val cardInputStream = ObjectInputStream(FileInputStream("${applicationContext.filesDir} cardsInDecks"))
-        cardsInDecks = cardInputStream.readObject() as ArrayList<Card>
+        val cardsInDecks = cardInputStream.readObject() as ArrayList<Card>
         cardInputStream.close()
         return cardsInDecks
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main, menu)
-        return true;
+        return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

@@ -6,11 +6,13 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import java.io.FileInputStream
 import java.io.ObjectInputStream
 
+@Suppress("UNCHECKED_CAST")
 class CardScreen : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,6 +40,12 @@ class CardScreen : AppCompatActivity() {
         commanderNameRecyclerView.adapter = CardScreenCommanderAdapter(cardCmdrHashMap)
         commanderNameRecyclerView.layoutManager = LinearLayoutManager(this)
 
+        if (cardCmdrHashMap.size %2 == 0){
+            commanderNameRecyclerView.setBackgroundColor(ContextCompat.getColor(commanderNameRecyclerView.context, R.color.card_background_1))
+        }else{
+            commanderNameRecyclerView.setBackgroundColor(ContextCompat.getColor(commanderNameRecyclerView.context, R.color.card_background_2))
+        }
+
 
 
 
@@ -53,7 +61,7 @@ class CardScreen : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main, menu)
-        return true;
+        return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

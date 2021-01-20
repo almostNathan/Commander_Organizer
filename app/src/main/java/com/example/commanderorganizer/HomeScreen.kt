@@ -13,6 +13,7 @@ import android.widget.Button
 import android.widget.ListView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import java.io.FileInputStream
@@ -20,6 +21,7 @@ import java.io.FileOutputStream
 import java.io.ObjectInputStream
 import java.io.ObjectOutputStream
 
+@Suppress("UNCHECKED_CAST")
 class HomeScreen : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,14 +31,14 @@ class HomeScreen : AppCompatActivity(){
 
 
     private fun addDeckToLibrary(deckListString: String?) {
-        var deckListArray = deckListString?.split("\n")
-        var commanderName = findCommander(deckListArray)
-        var commanderIndex = addCommander(commanderName)
+        val deckListArray = deckListString?.split("\n")
+        val commanderName = findCommander(deckListArray)
+        val commanderIndex = addCommander(commanderName)
 
 
         if(deckListArray != null){
             for(item in deckListArray){
-                var newItem = item.split(" ", ignoreCase = false, limit = 2)
+                val newItem = item.split(" ", ignoreCase = false, limit = 2)
                 if(newItem[0] != "*CMDR*"){
                     addCard(newItem[1], commanderIndex)
 
@@ -50,7 +52,7 @@ class HomeScreen : AppCompatActivity(){
     private fun findCommander(deckListArray: List<String>?): String {
         if (deckListArray != null) {
             for (item in deckListArray){
-                var newItem = item.split(" ", ignoreCase = true, limit = 2)
+                val newItem = item.split(" ", ignoreCase = true, limit = 2)
                 if (newItem[0] == "*CMDR*"){
                     return newItem[1]
                 }
@@ -61,7 +63,7 @@ class HomeScreen : AppCompatActivity(){
 
     private fun addCommander(commanderName: String) : Int {
         println(commanderName)
-        var cmdrs = getCmdrHashMap()
+        val cmdrs = getCmdrHashMap()
 
 
 
@@ -84,7 +86,7 @@ class HomeScreen : AppCompatActivity(){
 
     private fun addCard(cardName: String, commanderKey:Int) {
         //load the listof cards
-        var cardsInDecks = getCardsInDecks()
+        val cardsInDecks = getCardsInDecks()
 
 
         println(commanderKey)
@@ -115,7 +117,7 @@ class HomeScreen : AppCompatActivity(){
     }
 
     private fun getLegends() : ArrayList<String>{
-        var returnList = ArrayList<String>()
+        val returnList = ArrayList<String>()
         val inputStream = resources.openRawResource(R.raw.legendary_creatures)
 
         inputStream.bufferedReader().useLines { lines -> lines.forEach { returnList.add(it)} }
@@ -141,7 +143,7 @@ class HomeScreen : AppCompatActivity(){
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main, menu)
-        return true;
+        return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -197,6 +199,11 @@ class HomeScreen : AppCompatActivity(){
         //apply adapter
         cmdrRecyclerView.adapter = adapter
         cmdrRecyclerView.layoutManager = LinearLayoutManager(this)
+        if(commanderHashMap?.size?.rem(2) == 0){
+            cmdrRecyclerView.setBackgroundColor(ContextCompat.getColor(cmdrRecyclerView.context, R.color.commander_background_1))
+        }else {
+            cmdrRecyclerView.setBackgroundColor(ContextCompat.getColor(cmdrRecyclerView.context, R.color.commander_background_2))
+        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
