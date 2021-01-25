@@ -13,14 +13,15 @@
         >
 
         <AutoCompleteTextView
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_weight="1"
-            android:hint="@string/enter_card_autocomplete"
             android:id="@+id/add_card_auto_complete"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:layout_weight="1"
+            android:background="@color/white"
             android:completionThreshold="3"
-            android:dropDownHeight="100dp"
-            android:background="@color/white"/>
+            android:dropDownHeight="400dp"
+            android:duplicateParentState="true"
+            android:hint="@string/enter_card_autocomplete" />
 
         <Button
             android:layout_width="match_parent"
@@ -47,7 +48,6 @@
     <Button
         android:id="@+id/submit_deck"
         android:onClick="submitDeck"
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/submit_deck_button" />

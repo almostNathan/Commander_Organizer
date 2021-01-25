@@ -27,14 +27,16 @@ class AddDeckScreen : Activity(){
     }
 
     private fun getListOfAllCards(): MutableList<String> {
-        var returnList = mutableListOf<String>()
+        val returnList = mutableListOf<String>()
         val inputStream = resources.openRawResource(R.raw.card_names)
         inputStream.bufferedReader().useLines { lines -> lines.forEach { returnList.add(it)} }
+
+        inputStream.close()
         return returnList
 
     }
 
-    fun addCardToDeck(view: View) {
+    fun addCardToDeck() {
         val deckList = findViewById<View>(R.id.add_deck_edit_text) as EditText
         val enterCard = findViewById<View>(R.id.add_card_auto_complete) as AutoCompleteTextView
 
@@ -45,7 +47,7 @@ class AddDeckScreen : Activity(){
     }
 
 
-    fun submitDeck(view: View) {
+    fun submitDeck() {
         val deckListView = findViewById(R.id.add_deck_edit_text) as EditText
         val deckList = deckListView.text.toString()
 

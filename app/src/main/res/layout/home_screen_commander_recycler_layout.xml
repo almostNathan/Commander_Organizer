@@ -8,8 +8,8 @@
         android:id="@+id/commander_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="16sp"
-        android:paddingVertical="4dp"
+        android:textSize="20sp"
+        android:paddingVertical="6dp"
         android:fontFamily="sans-serif-medium"/>
 
 </LinearLayout>

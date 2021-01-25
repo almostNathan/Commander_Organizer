@@ -11,7 +11,27 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/annotation" />
+            <option value="$PROJECT_DIR$/annotation/compiler" />
+            <option value="$PROJECT_DIR$/annotation/compiler/test" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/integration" />
+            <option value="$PROJECT_DIR$/integration/concurrent" />
+            <option value="$PROJECT_DIR$/integration/cronet" />
+            <option value="$PROJECT_DIR$/integration/gifencoder" />
+            <option value="$PROJECT_DIR$/integration/okhttp" />
+            <option value="$PROJECT_DIR$/integration/okhttp3" />
+            <option value="$PROJECT_DIR$/integration/recyclerview" />
+            <option value="$PROJECT_DIR$/integration/volley" />
+            <option value="$PROJECT_DIR$/library" />
+            <option value="$PROJECT_DIR$/library/findbugs" />
+            <option value="$PROJECT_DIR$/library/pmd" />
+            <option value="$PROJECT_DIR$/library/test" />
+            <option value="$PROJECT_DIR$/samples" />
+            <option value="$PROJECT_DIR$/samples/flickr" />
+            <option value="$PROJECT_DIR$/samples/gallery" />
+            <option value="$PROJECT_DIR$/samples/giphy" />
+            <option value="$PROJECT_DIR$/samples/imgur" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

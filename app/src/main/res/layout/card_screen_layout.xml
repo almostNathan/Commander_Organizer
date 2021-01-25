@@ -11,8 +11,14 @@
         android:layout_height="wrap_content"
         android:textSize="24sp"
         android:textStyle="bold"
-        android:paddingVertical="5dp"
-        android:background="@color/card_name_background"/>
+        android:paddingVertical="5dp"/>
+
+    <ImageView
+        android:contentDescription="Card Image"
+        android:id="@+id/card_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"

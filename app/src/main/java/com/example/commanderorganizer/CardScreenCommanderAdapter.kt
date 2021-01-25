@@ -25,7 +25,6 @@ class CardScreenCommanderAdapter (private val cardCmdrHashMap : HashMap<Int, Str
 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        println(cardCmdrHashMap)
         val cmdrKeys = cardCmdrHashMap.keys.toIntArray()
 
         holder.textView?.text = cardCmdrHashMap[cmdrKeys[position]]

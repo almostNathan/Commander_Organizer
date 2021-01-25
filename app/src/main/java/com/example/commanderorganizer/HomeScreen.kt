@@ -122,6 +122,7 @@ class HomeScreen : AppCompatActivity(){
 
         inputStream.bufferedReader().useLines { lines -> lines.forEach { returnList.add(it)} }
 
+        inputStream.close()
         return returnList
 
     }

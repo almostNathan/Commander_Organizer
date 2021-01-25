@@ -1,7 +1,6 @@
 package com.example.commanderorganizer
 
 import android.content.Intent
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,15 +8,13 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 
-class DeckListAdapter (private val cardList : ArrayList<Card>) : RecyclerView.Adapter<DeckListAdapter.ViewHolder>() {
+class DeckListCardAdapter (private val cardList : ArrayList<Card>) : RecyclerView.Adapter<DeckListCardAdapter.ViewHolder>() {
 
 
 
 
     class ViewHolder(val view : View) : RecyclerView.ViewHolder(view){
         val textView : TextView = view.findViewById(R.id.card_name)
-
-
     }
 
     override fun getItemCount(): Int {
@@ -44,7 +41,7 @@ class DeckListAdapter (private val cardList : ArrayList<Card>) : RecyclerView.Ad
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.deck_list_card_layout, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.deck_list_card_recycler_layout, parent, false)
 
 
         return ViewHolder(view)
